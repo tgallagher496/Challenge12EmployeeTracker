@@ -18,12 +18,15 @@ VALUES("Sales Lead", 100000,1),
 
 INSERT INTO employee(first_name,last_name,role_id)
 VALUES("John","Doe", 1),
-        ("Mike", "Chan",3)
-        ("Ashely","Rodriguez",4)
-        ("Kevin","Tupik",2)
-        ("Kunal","Singh", 5)
-        ("Malia","Brown",6)
-        ("Sarah","Lourd",7)
+        ("Mike", "Chan",3),
+        ("Ashely","Rodriguez",4),
+        ("Kevin","Tupik",2),
+        ("Kunal","Singh", 5),
+        ("Malia","Brown",6),
+        ("Sarah","Lourd",7),
         ("Tom","Allen",8);
 
-UPDATE employee SET manager_id=1 WHERE id=2;
+UPDATE employee SET manager_id=2 WHERE id=1;
+UPDATE employee SET manager_id=4 WHERE id=3;
+UPDATE employee SET manager_id=6 WHERE id=5;
+UPDATE employee SET manager_id=8 WHERE id=7;
