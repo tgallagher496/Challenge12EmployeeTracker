@@ -38,7 +38,7 @@ function viewEmployees(){
     FROM employee
     LEFT JOIN role ON role.id=employee.role_id
     LEFT JOIN department ON role.department_id=department.id
-    LEFT JOIN employee AS mgr ON mgr.manager_id=employee.id`, (err,data)=>{
+    LEFT JOIN employee AS mgr ON employee.manager_id=mgr.id`, (err,data)=>{
 
         console.table(data)
         menu()

@@ -10,4 +10,4 @@ SELECT employee.id, employee.first_name, employee.last_name,role.title,departmen
 FROM employee
 LEFT JOIN role ON role.id=employee.role_id
 LEFT JOIN department ON role.department_id=department.id
-LEFT JOIN employee AS mgr ON mgr.manager_id=employee.id
+LEFT JOIN employee AS mgr ON employee.manager_id=mgr.id
