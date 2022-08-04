@@ -1,5 +1,7 @@
 # Challenge12EmployeeTracker
 
+Video Link: https://drive.google.com/file/d/1A2-LzW6pOdRuQ72E4ovVz3Tl2rlETW3d/view
+
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
