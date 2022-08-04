@@ -68,47 +68,6 @@ function viewRoles(){
     })
 }
 
-function updateRole(){
-db.query(`select CONCAT(first_name, " ",last_name) as name FROM employee`,(err,updateData)=>{
-    db.query(`SELECT title as name FROM role`,(err,changeRole)=>{
-    const personChange=[
-        {
-            type:"list",
-            name:"name",
-            message:"Which employee would you like to change the role of?",
-            choices: updateData
-        }
-    ]
-    inquirer.prompt(personChange).then(response=>{
-        const parameters=[response.name]
-        console.log(`You have chosen to change ${response.name}'s role`)
-        
-            const roleChange=[
-                {
-                    type:"list",
-                    name:"title",
-                    message:"What would you like to change the role to?",
-                    choices: changeRole
-                }
-            ]
-        
-            inquirer.prompt(roleChange).then(response=>{
-                const parameters=[response.title]
-                console.log(`You have chosen to change the role to ${response.title}`)
-                db.query(`UPDATE employee_db SET title = response.title WHERE CONCAT(first_name, " ",last_name) as name is response.name`,(err,changedData)=>{
-                    viewEmployees()
-                 })
-            })
-            
-         })
-
-    })
-})
-
-
- 
-}
-
 function addDepartment(){
     const departmentAddQuestions=[
         {
@@ -196,4 +155,32 @@ function addEmployee(){
         })
     })
 
+}
+
+function updateRole(){
+    db.query(`select CONCAT(first_name, " ",last_name) as name, id as value FROM employee`,(err,updateData)=>{
+        db.query(`SELECT title as name, id as value FROM role`,(err,changeRole)=>{
+        const personChange=[
+            {
+                type:"list",
+                name:"name",
+                message:"Which employee would you like to change the role of?",
+                choices: updateData
+            },
+            {
+                type:"list",
+                name:"title",
+                message:"What would you like to change the role to?",
+                choices: changeRole
+            }
+        ]
+        inquirer.prompt(personChange).then(response=>{
+            const parameters=[response.title,response.name]
+            console.log(parameters)
+            db.query("UPDATE employee SET role_id = ? WHERE id = ?",parameters,(err,data)=>{
+                viewEmployees();
+            })
+        })
+    })
+})
 }
